@@ -10,9 +10,9 @@ function DashboardNav() {
         </div>
         <nav className="dashboard-nav">
             <ul>
-                <li><a className='nav-item' href="/events">Events</a></li>
-                <li><a className='nav-item' href="/bookings">Your Bookings</a></li>
-                <li><a className='nav-item' href="/manage">Manage Bookings</a></li>
+                <li><a className='nav-item' href="/">Events</a></li>
+                <li><a className='nav-item' href="/#/my_bookings">Your Bookings</a></li>
+                <li><a className='nav-item' href="/#/admin_manage">Manage Bookings</a></li>
             </ul>
         </nav>
         <LoginButton label="Login" />
