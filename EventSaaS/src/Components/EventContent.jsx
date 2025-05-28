@@ -1,16 +1,35 @@
-import React from 'react'
 import EventCard from './EventCard'
+import React, { useState, useEffect } from 'react';
 
-function EventContent({ events }) {
-  return (
+function EventContent() {
+
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        const fetchEvents = async () => {
+        try {
+            const res = await fetch("https://localhost:7168/api/Event");
+            if (!res.ok) throw new Error(res.statusText);
+            const data = await res.json();
+            setEvents(data);
+        } catch (err) {
+            console.error('Failed to fetch events:', err);
+        }
+    };
+
+    fetchEvents();
+  }, []);
+
+
+return (
     <div className="event-content">
         {events && events.length > 0 ? (
-            events.map((event, index) => (
+            events.map((event) => (
                 <EventCard 
-                    key={event.id || index}
-                    title={event.title}
-                    date={event.date}
-                    type={event.type}
+                    key={event.id}
+                    title={event.eventName}
+                    date={event.dateFrom.slice(0, 10)}
+                    type={event.category}
                     location={event.location}
                     price={event.price}
                 />

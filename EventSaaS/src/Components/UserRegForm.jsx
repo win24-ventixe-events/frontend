@@ -73,8 +73,13 @@ function UserRegForm() {
     };
 
     return (
-        <div className="form-container">
-        <h2>Create Account</h2>
+        <div className="form-container wrapper">
+            <img
+                src="./src/assets/images/Logo.svg"
+                alt="Logo"
+                className="public-image"
+            />      
+        <h1>Create Account</h1>
         <form onSubmit={handleSubmit} noValidate>
             <div className="form-field">
             <label htmlFor="displayName">Display Name</label>
@@ -124,7 +129,7 @@ function UserRegForm() {
             {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
             </div>
 
-            <button type="submit">
+            <button className='btn main-btn' type="submit">
                 Register
             </button>
         </form>

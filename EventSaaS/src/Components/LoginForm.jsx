@@ -67,37 +67,44 @@ function LoginForm() {
     };
 
     return (
-        <div className="form-container">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit} noValidate>
-
-            <div className="form-field">
-            <label htmlFor="email">Email</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-            />
-            {errors.email && <span className="error">{errors.email}</span>}
+        
+            <div className="form-container wrapper">
+                <img
+                src="./src/assets/images/Logo.svg"
+                alt="Logo"
+                className="public-image"
+                />      
+                <h1>Login</h1>
+                <form onSubmit={handleSubmit} noValidate>
+        
+                    <div className="form-field">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                    />
+                    {errors.email && <span className="error">{errors.email}</span>}
+                    </div>
+        
+                    <div className="form-field">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={form.password}
+                        onChange={handleChange}
+                    />
+                    {errors.password && <span className="error">{errors.password}</span>}
+                    </div>
+        
+                    <button className="btn main-btn" type="submit">Login</button>
+                </form>
             </div>
-
-            <div className="form-field">
-            <label htmlFor="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-            />
-            {errors.password && <span className="error">{errors.password}</span>}
-            </div>
-
-            <button type="submit">Login</button>
-        </form>
-        </div>
+        
     );
 }
 
