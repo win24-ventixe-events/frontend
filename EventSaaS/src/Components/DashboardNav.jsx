@@ -1,7 +1,26 @@
 import LoginButton from './LoginButton'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function DashboardNav() {
-  return (
+
+        const navigate = useNavigate();
+        const [isAuthenticated, setIsAuthenticated] = useState(() =>
+            Boolean(localStorage.getItem('jwt'))
+        );
+
+        const handleLogout = () => {
+            localStorage.removeItem('jwt');
+            setIsAuthenticated(false);
+            navigate('/');
+        }
+
+        const handleLogin = () => {
+            navigate('/login');
+        };
+    
+return (
     <div className='dashboard-nav-container'>
         <div className='logo-container'>
             <a href="/">
@@ -15,9 +34,9 @@ function DashboardNav() {
                 <li><a className='nav-item' href="/#/admin_manage">Manage Bookings</a></li>
             </ul>
         </nav>
-        <LoginButton label="Login" />
+        <LoginButton label={isAuthenticated ? "Log Out" : "Log In"} onClick={isAuthenticated ? handleLogout : handleLogin} />
     </div>
-  )
+)
 }
 
 export default DashboardNav

@@ -1,4 +1,3 @@
-// LoginForm.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
@@ -39,6 +38,9 @@ function LoginForm() {
         if (!response.ok) {
             if (response.status === 401) {
             console.log("Invalid email or password.");
+            alert("Invalid username or password")
+            setForm({ email: "", password: "" });
+
             } else {
             const err = await response.json();
             console.log(err.message || "Server error.");
