@@ -22,22 +22,29 @@ function EventContent() {
 
 
 return (
-    <div className="event-content">
+    <>
+        <h1 className='site-title'>Events</h1>
+        <div className="event-content">
         {events && events.length > 0 ? (
             events.map((event) => (
                 <EventCard 
                     key={event.id}
+                    id={event.id}
                     title={event.eventName}
                     date={event.dateFrom.slice(0, 10)}
                     type={event.category}
                     location={event.location}
                     price={event.price}
+                    imageUrl={event.imageUrl}
+                    description={event.description}
                 />
                 ))
         ) : (
             <p>No events available</p>
         )}
     </div>
+    </>
+    
 )
 }
 

@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 
 function Dashboard({ ContentComponent }) {
 
-    const [userName, setUserName] = useState('User');
+    const [userName, setUserName] = useState('Login to make bookings');
 
     useEffect(() => {
         const token = localStorage.getItem('jwt');
@@ -24,7 +24,7 @@ function Dashboard({ ContentComponent }) {
             <DashboardNav />
             <div className="title-section">
                 <p className="welcome-msg">
-                    Welcome, {userName}
+                    {`Welcome, ${userName}`}
                 </p>
             </div>
             {ContentComponent ? <ContentComponent /> : <div>Sorry there has been an error</div>}

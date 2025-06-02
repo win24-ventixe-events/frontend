@@ -1,10 +1,19 @@
 import React from 'react'
 import MainButton from './MainButton'
+import { useNavigate } from 'react-router-dom';
 
 function EventCard(props) {
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/more_info", {state: {...props}});
+    }
+
   return (
     <div className='event-card'>
-        <div className='event-image'>
+        <div className='event-image'
+        style={{ backgroundImage:`url(${props.imageUrl})` }}>
         </div>
         <div className="event-info">
             <p className="event-title">
@@ -23,7 +32,7 @@ function EventCard(props) {
                 {props.price}
             </p>
         </div>
-            <MainButton label="Info & Buy" />
+            <MainButton label="Info & Buy" onClick={handleClick} />
     </div>
   )
 }

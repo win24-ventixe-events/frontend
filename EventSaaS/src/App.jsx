@@ -6,6 +6,8 @@ import EventContent from "./Components/EventContent"
 import Signup from "./Pages/Signup"
 import LoginPage from "./Pages/LoginPage"
 import Homepage from "./Pages/Homepage"
+import MoreInfo from "./Pages/MoreInfo"
+import Success from "./Pages/Success"
 
 function App() {
     return (
@@ -19,6 +21,8 @@ function App() {
                         <Route path="/events" element={<Dashboard ContentComponent={EventContent} />} />
                         <Route path="/my_bookings" element={<Dashboard ContentComponent={Bookings} />} />
                         <Route path="/admin_manage" element={<Dashboard ContentComponent={Manage} />} />
+                        <Route path="/more_info" element={<MoreInfo />} />
+                        <Route path="/success" element={<Success />} />
                     </Routes>
                 </main>
             </HashRouter>
