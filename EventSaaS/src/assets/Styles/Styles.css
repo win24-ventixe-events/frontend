@@ -66,15 +66,10 @@ body {
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 2rem;
 
     @media (max-width: 768px) {
         max-width: 100%;
-        padding: 0 1.5rem;
-    }
-
-    @media (max-width: 480px) {
-        padding: 0 1rem;
     }
 }
 
@@ -295,8 +290,14 @@ body {
     border: 1px solid black;
     border-radius: 1rem;
     background-color: var(--cool-grey-20);
-    margin-top: 6rem;
+    margin: 5rem auto;
     padding: 2rem;
+
+    @media (max-width: 768px) {
+        border-radius: 0;
+        background-color: transparent;
+        border: none;
+    }
 
     .form-field {
         display: flex;
@@ -306,9 +307,14 @@ body {
         margin-bottom: 1rem;
 
         input {
-            height: 2rem;
+            height: 2.5rem;
             border-radius: .5rem;
+            padding-inline: 1rem;
             border: none;
+
+            @media (max-width: 768px) {
+                border: 1px solid black;
+            }
         }
 
     }
@@ -345,9 +351,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem;
-    button{
-        width: 50%!important;
+    gap: 2rem;
+    padding: 2rem;
+
+    h1 {
+        text-align: center;
+    }
+
+    button {
+        width: 50% !important;
+        margin-bottom: 2rem;
     }
 }
 
@@ -355,7 +368,7 @@ body {
 .more-info-wrapper {
     max-width: 900px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 2rem;
 
     @media (max-width: 768px) {
         max-width: 100%;
@@ -367,17 +380,19 @@ body {
     }
 }
 
-.more-info-txt{
+.more-info-txt {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 2.5rem;
     text-align: left;
     padding-left: 4rem;
     font-size: var(--body-16);
     font-style: italic;
-    span{
+    margin-bottom: 2rem;
+
+    span {
         color: rgb(94, 93, 93);
         text-decoration: none;
     }
@@ -386,7 +401,7 @@ body {
 .more-info-img {
     display: block;
     border-radius: 5rem;
-    height: 500px;
+    height: 400px;
     width: 100%;
     overflow: hidden;
 
@@ -397,21 +412,20 @@ body {
     }
 }
 
-.event-id{
+.event-id {
     font-size: var(--body-18);
     color: grey;
     font-weight: 300;
 }
+
 .back-to-events {
     display: flex;
     align-items: center;
     margin-right: auto;
-    padding: 3rem;
+    padding: 1rem;
     text-decoration: none;
     color: black;
     font-size: var(--body-20);
-    
-    
 
     span {
         display: block;
@@ -424,7 +438,7 @@ body {
     }
 }
 
-.terms-and-conditions{
+.terms-and-conditions {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -432,34 +446,80 @@ body {
     gap: .5rem;
 }
 
-.book-and-pay{
+.book-and-pay {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
     gap: .5rem;
 
-    input{
+    input {
         height: 2rem;
     }
 }
 
-.success-wrapper{
+.success-wrapper {
     margin: 5rem auto;
-    max-width: 450px ;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 4rem;
-    p{
+
+    p {
         color: green;
         font-size: var(--body-18);
     }
 }
 
-.support{
+.support {
     margin-top: 1.5rem;
     text-align: center;
     font-weight: 300;
     font-style: italic;
+}
+
+.wrapper-homepage {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    min-height: 100vh;
+    padding: 0 2rem;
+
+    img {
+        height: 6rem;
+        margin-bottom: 2rem;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        width: 50%;
+        margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            width: 45%;
+        }
+    }
+
+    h2 {
+        font-size: var(--h1);
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    p {
+        font-size: var(--body-14);
+    }
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+        padding: 0 1.5rem;
+    }
 }

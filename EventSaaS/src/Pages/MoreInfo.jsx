@@ -18,7 +18,6 @@ function MoreInfo() {
       navigate('/login');
     }
     const decodedToken = jwtDecode(token);
-    console.log('jwt from storage:', token);
 
     if (decodedToken.exp * 1000 < Date.now()) {
         console.error("Token has expired. Please log in again.");
@@ -74,7 +73,11 @@ const handleTicketChange = (e) => {
       <div className='more-info-img'>
         <img src={eventData.imageUrl} alt="event image" />
       </div>
-      <h1>{eventData.title}<span className='event-id'> (event ID: {eventData.id})</span></h1>
+      <h1>{eventData.title}
+        <br />
+        <span className='event-id'> (event ID: {eventData.id})
+          </span>
+      </h1>
       <div className="more-info-txt">
           <p className='more-info-price'>
             <span>Category:</span> {eventData.type}
