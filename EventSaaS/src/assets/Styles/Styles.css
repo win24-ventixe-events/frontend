@@ -277,7 +277,7 @@ body {
         margin-top: 2rem;
         padding-bottom: 1rem;
         overflow-y: scroll;
-        max-height: calc(100vh - 100px);
+        max-height: calc(100vh - 200px);
     }
 }
 
