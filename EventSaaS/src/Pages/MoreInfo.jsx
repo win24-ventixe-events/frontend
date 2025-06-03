@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import MainButton from '../Components/MainButton';
 import { jwtDecode } from 'jwt-decode';
+import LeftArrow from "../assets/images/arrow-left-5-svgrepo-com.svg"
+import Logo from '../assets/images/Logo.svg';
 
 function MoreInfo() {
 
@@ -68,7 +70,7 @@ const handleTicketChange = (e) => {
     <div className='more-info-container more-info-wrapper'>
       <Link to="/events" className='back-to-events'>
         <span>
-          <img src="./src/assets/images/arrow-left-5-svgrepo-com.svg" alt="event image" />
+          <img src={LeftArrow} alt="event image" />
           </span>Back to Events</Link>
       <div className='more-info-img'>
         <img src={eventData.imageUrl} alt="event image" />
@@ -98,7 +100,7 @@ const handleTicketChange = (e) => {
       
       <p className='terms-and-conditions'> Event booking and tickets handles by 
         <span className='img-in-text'>
-          <img src="./src/assets/images/Logo.svg" alt="logo" />
+          <img src={Logo} alt="logo" />
         </span>
         <a href="#">terms and condition applies.</a></p>
         <div className='book-and-pay'>

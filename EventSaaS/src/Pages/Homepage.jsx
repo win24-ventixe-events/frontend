@@ -1,6 +1,7 @@
 import React from 'react'
 import MainButton from '../Components/MainButton'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import Logo from '../assets/images/Logo.svg';
 
 function Homepage() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function Homepage() {
   }
   return (
     <div className='wrapper-homepage'>
-      <img src="./src/assets/images/Logo.svg" alt="logo" />
+      <img src={Logo} alt="logo" />
       <h2>Book and enjoy your favourite events.</h2>
       <div className="btn-container">
           <MainButton label="Sign Up" onClick={handleSignUp} />

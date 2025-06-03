@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import Logo from '../assets/images/Logo.svg';
 
 function UserRegForm() {
     const [form, setForm] = useState({
@@ -75,7 +76,7 @@ function UserRegForm() {
     return (
         <div className="form-container wrapper">
             <img
-                src="../assets/images/Logo.svg"
+                src={Logo}
                 alt="Logo"
                 className="public-image"
             />      
