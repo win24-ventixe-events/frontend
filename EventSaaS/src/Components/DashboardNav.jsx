@@ -30,10 +30,10 @@ return (
         <div className='dashboard-nav-container'>
             <div className='logo-container'>
                 <a href="/">
-                    <img src="./src/assets/images/Logo.svg" alt="logo" />
+                    <img src="../assets/images/Logo.svg" alt="logo" />
                 </a>
 
-                <img onClick={handleMenu} className='mobile-menu' src="./src/assets/images/menu-svgrepo-com.svg" alt="menu" />
+                <img onClick={handleMenu} className='mobile-menu' src="../assets/images/menu-svgrepo-com.svg" alt="menu" />
             </div>
             <nav className={`dashboard-nav ${isShown ? "" : "hidden"}`}>
                 <ul>
