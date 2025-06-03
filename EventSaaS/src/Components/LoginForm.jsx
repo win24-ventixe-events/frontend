@@ -70,11 +70,13 @@ function LoginForm() {
     return (
         
             <div className="form-container wrapper">
-                <img
-                src={Logo}
-                alt="Logo"
-                className="public-image"
-                />      
+                <a href="/events">
+                    <img
+                    src={Logo}
+                    alt="Logo"
+                    className="public-image"
+                />
+                </a>    
                 <h1>Login</h1>
                 <form onSubmit={handleSubmit} noValidate>
         
