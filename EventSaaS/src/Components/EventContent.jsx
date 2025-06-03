@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 function EventContent() {
 
     const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -14,6 +15,8 @@ function EventContent() {
             setEvents(data);
         } catch (err) {
             console.error('Failed to fetch events:', err);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -25,8 +28,10 @@ return (
     <>
         <h1 className='site-title'>Events</h1>
         <div className="event-content">
-        {events && events.length > 0 ? (
-            events.map((event) => (
+        {loading ? (
+            <p>Loading events...</p>
+            ) : events && events.length > 0 ? (
+                events.map((event) => (
                 <EventCard 
                     key={event.id}
                     id={event.id}
