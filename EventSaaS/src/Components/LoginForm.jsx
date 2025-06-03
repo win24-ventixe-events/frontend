@@ -24,35 +24,36 @@ function LoginForm() {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-        await validationSchema.validate(form, { abortEarly: false });
-        setErrors({});
 
-        const response = await fetch("https://ventixe-account-gkhcg2h8hbhvfdch.northeurope-01.azurewebsites.net/api/User/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-            email: form.email,
-            password: form.password
-            })
-        });
+            await validationSchema.validate(form, { abortEarly: false });
+            setErrors({});
 
-        if (!response.ok) {
-            if (response.status === 401) {
-            console.log("Invalid email or password.");
-            alert("Invalid username or password")
-            setForm({ email: "", password: "" });
+            const response = await fetch("https://accountmanager-dsbubxefbfdaedgz.northeurope-01.azurewebsites.net/api/User/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: form.email,
+                    password: form.password
+                })
+            });
 
-            } else {
-            const err = await response.json();
-            console.log(err.message || "Server error.");
-            }
-            return;
+            if (!response.ok) {
+                if (response.status === 401) {
+                console.log("Invalid email or password.");
+                alert("Invalid username or password")
+                setForm({ email: "", password: "" });
+
+                } else {
+                const err = await response.json();
+                console.log(err.message || "Server error.");
+                }
+                return;
         }
 
-        const { token } = await response.json();
-        localStorage.setItem("jwt", token);
+            const { token } = await response.json();
+            localStorage.setItem("jwt", token);
 
-        navigate("/events");
+            navigate("/events");
 
         }  catch (err) {
             if (err.name === "ValidationError" && Array.isArray(err.inner)) {

@@ -43,7 +43,7 @@ function UserRegForm() {
         try{
             await validationSchema.validate(form, {abortEarly: false});
             
-            const response = await fetch("https://ventixe-account-gkhcg2h8hbhvfdch.northeurope-01.azurewebsites.net/api/User", {
+            const response = await fetch("https://accountmanager-dsbubxefbfdaedgz.northeurope-01.azurewebsites.net/api/User", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
