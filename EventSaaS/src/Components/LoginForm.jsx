@@ -70,7 +70,7 @@ function LoginForm() {
     return (
         
             <div className="form-container wrapper">
-                <a href="/events">
+                <a href="/">
                     <img
                     src={Logo}
                     alt="Logo"
