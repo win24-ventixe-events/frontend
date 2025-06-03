@@ -217,11 +217,12 @@ body {
             padding: 2rem;
         }
     }
-
-
-
 }
 
+.welcome-msg{
+    max-width: 20ch;
+    text-align: left;
+}
 
 .site-title {
     grid-area: header;
