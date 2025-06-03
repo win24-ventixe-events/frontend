@@ -27,7 +27,7 @@ function LoginForm() {
         await validationSchema.validate(form, { abortEarly: false });
         setErrors({});
 
-        const response = await fetch("https://localhost:7223/api/User/login", {
+        const response = await fetch("https://ventixe-account-gkhcg2h8hbhvfdch.northeurope-01.azurewebsites.net/api/User/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
