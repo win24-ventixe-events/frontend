@@ -40,7 +40,7 @@ return (
                     type={event.category}
                     location={event.location}
                     price={event.price}
-                    imageUrl={event.imageUrl}
+                    imageUrl={event.imageUrl || '' }
                     description={event.description}
                 />
                 ))
