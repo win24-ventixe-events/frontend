@@ -8,7 +8,7 @@ function EventContent() {
     useEffect(() => {
         const fetchEvents = async () => {
         try {
-            const res = await fetch("ventixe-crud-aee8bnfrgja4hseh.canadacentral-01.azurewebsites.net/api/Event");
+            const res = await fetch("https://crud-ventixe-eu-d3aedzbch0ctgshg.northeurope-01.azurewebsites.net/api/Event");
             if (!res.ok) throw new Error(res.statusText);
             const data = await res.json();
             setEvents(data);

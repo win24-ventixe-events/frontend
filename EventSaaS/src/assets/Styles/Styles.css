@@ -220,8 +220,8 @@ body {
 }
 
 .welcome-msg{
-    max-width: 20ch;
-    text-align: left;
+    max-width: 15ch;
+    text-align: center;
 }
 
 .site-title {
