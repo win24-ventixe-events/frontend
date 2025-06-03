@@ -29,7 +29,7 @@ function Bookings() {
   
       const fetchBookings = async () => {
       try {
-          const res = await fetch("http://localhost:5244/api/Booking", {
+          const res = await fetch("https://ventixe-bookings-axaph0ajb7d6gagn.northeurope-01.azurewebsites.net/api/Booking", {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
