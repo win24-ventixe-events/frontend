@@ -52,9 +52,15 @@ function UserRegForm() {
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            console.error("Server returned error:", errorData);
-            return;
+                const contentType = response.headers.get("content-type");
+
+                if (contentType && contentType.includes("application/json")) {
+                    const errorData = await response.json();
+                    console.error("Server returned error:", errorData);
+                } else {
+                console.error(`HTTP Error: ${response.status} ${response.statusText}`);
+        }
+        return;
         }
 
             navigate("/events");
