@@ -75,7 +75,7 @@ function UserRegForm() {
     return (
         <div className="form-container wrapper">
             <img
-                src="./src/assets/images/Logo.svg"
+                src="../assets/images/Logo.svg"
                 alt="Logo"
                 className="public-image"
             />      

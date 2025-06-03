@@ -1,7 +1,8 @@
 import LoginButton from './LoginButton'
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import Logo from '../assets/images/Logo.svg';
+import MenuIcon from '../assets/images/menu-svgrepo-com.svg';
 
 function DashboardNav() {
 
@@ -30,10 +31,10 @@ return (
         <div className='dashboard-nav-container'>
             <div className='logo-container'>
                 <a href="/">
-                    <img src="../assets/images/Logo.svg" alt="logo" />
+                    <img src={Logo} alt="logo" />
                 </a>
 
-                <img onClick={handleMenu} className='mobile-menu' src="../assets/images/menu-svgrepo-com.svg" alt="menu" />
+                <img onClick={handleMenu} className='mobile-menu' src={MenuIcon} alt="menu" />
             </div>
             <nav className={`dashboard-nav ${isShown ? "" : "hidden"}`}>
                 <ul>
