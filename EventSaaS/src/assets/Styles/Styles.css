@@ -305,6 +305,10 @@ body {
         border: none;
     }
 
+    .public-image{
+        width: 100%;
+        padding-inline: 1.5rem;
+    }
     .form-field {
         display: flex;
         flex-direction: column;
