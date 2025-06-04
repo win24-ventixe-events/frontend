@@ -8,7 +8,7 @@ function LoginForm() {
     const [form, setForm] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const validationSchema = Yup.object({
         email: Yup.string()
@@ -29,6 +29,7 @@ function LoginForm() {
 
             await validationSchema.validate(form, { abortEarly: false });
             setErrors({});
+            setLoading(true);
 
             const response = await fetch("https://accountmanager-dsbubxefbfdaedgz.northeurope-01.azurewebsites.net/api/User/login", {
                 method: "POST",
@@ -112,7 +113,7 @@ function LoginForm() {
         
                     <button className="btn main-btn" type="submit">Login</button>
                 </form>
-                {loading ? <div>
+                {loading ? <div className='login-spinner'>
                             <SyncLoader color="#F26CF9" size={50} />
                             <p>Signing you in...</p>
                             </div> : "" }

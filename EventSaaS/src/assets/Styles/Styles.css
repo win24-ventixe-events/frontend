@@ -236,6 +236,9 @@ body {
     text-decoration: underline;
 }
 
+.loggin-spinner{
+    margin: 0 auto;
+}
 
 .dashboard {
     display: grid;
