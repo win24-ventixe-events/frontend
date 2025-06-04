@@ -33,7 +33,8 @@ return (
         {loading ? (
             <div>
                 <p>Loading events...</p>
-                <SyncLoader color="#F26CF9" size={30} />
+                <br />
+                <SyncLoader color="#F26CF9" size={50} />
             </div>
             
             ) : events && events.length > 0 ? (
