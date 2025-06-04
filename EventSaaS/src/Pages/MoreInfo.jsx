@@ -36,7 +36,7 @@ function MoreInfo() {
     }
 
     try {
-      const response = await fetch('http://localhost:5244/api/Booking', {
+      const response = await fetch('https://ventixe-bookings-axaph0ajb7d6gagn.northeurope-01.azurewebsites.net/api/Booking', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
