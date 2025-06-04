@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import MyBookingCard from './MyBookingCard';
 import { jwtDecode } from 'jwt-decode';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { SyncLoader } from "react-spinners";
 
 function Bookings() {
 
   const navigate = useNavigate();
   const [bookings, setBookings] = useState([]);
   const token = localStorage.getItem('jwt');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
       if (!token || typeof token !== 'string'){
@@ -34,33 +36,47 @@ function Bookings() {
               'Authorization': `Bearer ${token}`,
             },
           });
+
+          if (!res.ok) throw new Error(res.statusText);
+
           const data = await res.json();
           setBookings(data);
+          
       } catch (err) {
           console.error('Failed to fetch events:', err);
+      } finally {
+          setLoading(false);
       }
   };
   
       fetchBookings();
-    }, [token]);
+    }, [token, navigate]);
 
 
   return (
     <>
-        <h1 className='site-title'>Events</h1>
+        <h1 className='site-title'>Your Bookings</h1>
         <div className="event-content">
-        {bookings && bookings.length > 0 ? (
-            bookings.map((event) => (
-                <MyBookingCard 
-                    key={event.id}
-                    title={event.eventName}
-                    date={event.date}
-                    location={event.location}
-                    count={event.numberOfTickets}
-                />
-                ))
+        {loading ? 
+          (
+            <div>
+                <p>Loading your bookings...</p>
+                <SyncLoader color="#F26CF9" size={60} />
+            </div>
+                    
+          ) :
+            bookings && bookings.length > 0 ? (
+              bookings.map((booking) => (
+                  <MyBookingCard 
+                      key={booking.id}
+                      title={booking.eventName}
+                      date={booking.date}
+                      location={booking.location}
+                      count={booking.numberOfTickets}
+                  />
+                  ))
         ) : (
-            <p>You dont have any bookings yet!</p>
+            <p>You don't have any bookings yet!</p>
         )}
         </div>
     </>
