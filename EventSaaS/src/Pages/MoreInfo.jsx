@@ -32,6 +32,8 @@ function MoreInfo() {
       eventId: eventData.id,
       userEmail: decodedToken.email,
       userId: decodedToken.sub,
+      date: eventData.date,
+      location: eventData.location,
       numberOfTickets: numTickets
     }
 
