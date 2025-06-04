@@ -121,6 +121,7 @@ body {
 .logo-container {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .event-card {
