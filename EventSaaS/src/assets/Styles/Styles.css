@@ -219,6 +219,11 @@ body {
     }
 }
 
+.active{
+    color: var(--primary-100);
+    border-left-color: 8px solid var(--primary-100);
+}
+
 .welcome-msg{
     max-width: 15ch;
     text-align: center;

@@ -1,5 +1,7 @@
 import EventCard from './EventCard'
 import React, { useState, useEffect } from 'react';
+import { SyncLoader } from "react-spinners";
+
 
 function EventContent() {
 
@@ -29,7 +31,11 @@ return (
         <h1 className='site-title'>Events</h1>
         <div className="event-content">
         {loading ? (
-            <p>Loading events...</p>
+            <div>
+                <p>Loading events...</p>
+                <SyncLoader color="#F26CF9" size={60} />
+            </div>
+            
             ) : events && events.length > 0 ? (
                 events.map((event) => (
                 <EventCard 

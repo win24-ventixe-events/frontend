@@ -37,9 +37,9 @@ return (
                 <img onClick={handleMenu} className='mobile-menu' src={MenuIcon} alt="menu" />
             </div>
             <nav className={`dashboard-nav ${isShown ? "" : "hidden"}`}>
-                <ul>
-                    <li><a className='nav-item' href="/#/events">Events</a></li>
-                    <li><a className='nav-item' href="/#/my_bookings">Your Bookings</a></li>
+               <ul>
+                    <li><NavLink className='nav-item' to="/events">Events</NavLink></li>
+                    <li><NavLink className='nav-item' to="/my_bookings">Your Bookings</NavLink></li>
                 </ul>
             </nav>
             <LoginButton className={isShown ? "" : "hidden"} label={isAuthenticated ? "Log Out" : "Log In"} onClick={isAuthenticated ? handleLogout : handleLogin} />
