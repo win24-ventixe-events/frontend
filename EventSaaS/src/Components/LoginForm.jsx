@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Logo from '../assets/images/Logo.svg';
+import { SyncLoader } from "react-spinners";
 
 function LoginForm() {
     const [form, setForm] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     const validationSchema = Yup.object({
         email: Yup.string()
@@ -56,15 +58,18 @@ function LoginForm() {
             navigate("/events");
 
         }  catch (err) {
+
             if (err.name === "ValidationError" && Array.isArray(err.inner)) {
                 const newErrors = {};
                 err.inner.forEach(({ path, message }) => {
                 newErrors[path] = message;
             });
             setErrors(newErrors);
-        } else {
+            } else {
             console.error("Unexpected error:", err);
-        }
+            } 
+        } finally {
+            setLoading(false)
         }
     };
 
@@ -107,6 +112,10 @@ function LoginForm() {
         
                     <button className="btn main-btn" type="submit">Login</button>
                 </form>
+                {loading ? <div>
+                            <SyncLoader color="#F26CF9" size={50} />
+                            <p>Signing you in...</p>
+                            </div> : "" }
             </div>
         
     );
