@@ -61,7 +61,7 @@ function Bookings() {
           (
             <div>
                 <p>Loading your bookings...</p>
-                <SyncLoader color="#F26CF9" size={60} />
+                <SyncLoader color="#F26CF9" size={30} />
             </div>
                     
           ) :
