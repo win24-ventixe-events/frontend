@@ -9,8 +9,11 @@ function UserRegForm() {
     displayName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    verified: true
     });
+
+    const [verificationCode, setVerificationCode] = useState('');
 
     const navigate = useNavigate();
 
@@ -39,11 +42,32 @@ function UserRegForm() {
         setForm(prev => ({ ...prev, [name]: value }));
     };
 
+    const handleVerificationCodeChange = (e) => {
+        const value = e.target.value.replace(/[^0-9]/g, '');
+        setVerificationCode(value);
+    };
+
     const handleRegistrationSubmit = async e => {
         e.preventDefault();
 
         try{
             await validationSchema.validate(form, {abortEarly: false});
+
+            const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/verify", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: form.email,
+                    verificationCode: verificationCode
+                })
+            });
+
+            if (!verificationResponse.ok) {
+                console.error("Verification failed");
+                return;
+            }
             
             const response = await fetch("https://accountmanager-dsbubxefbfdaedgz.northeurope-01.azurewebsites.net/api/User", {
             method: "POST",
@@ -83,7 +107,21 @@ function UserRegForm() {
 
     const handleVerification = async (e)=>{
         e.preventDefault();
-        setIsVerificationBoxShown(true);
+        const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: form.email,
+                })
+            });
+            if (!verificationResponse.ok) {
+                console.error("Verification failed");
+                return;
+            }
+
+            setIsVerificationBoxShown(true);
     }
 
     return (
@@ -157,6 +195,8 @@ function UserRegForm() {
                     maxLength="6"
                     pattern="[0-9]{6}"
                     placeholder="Enter 6-digit code"
+                    value={verificationCode}
+                    onChange={handleVerificationCodeChange}
                 />
             </div>   
             <MainButton label="Verify Email" onClick={handleRegistrationSubmit} />
