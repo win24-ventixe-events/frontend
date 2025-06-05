@@ -53,7 +53,7 @@ function UserRegForm() {
         try{
             await validationSchema.validate(form, {abortEarly: false});
 
-            const verificationResponse = await fetch("http://localhost:5017/api/Verification/verify", {
+            const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/verify", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -109,7 +109,7 @@ function UserRegForm() {
         e.preventDefault();
         try{
             await validationSchema.validate(form, {abortEarly: false});
-        const verificationResponse = await fetch("http://localhost:5017/api/Verification/send", {
+        const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/send", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
