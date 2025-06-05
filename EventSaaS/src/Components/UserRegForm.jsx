@@ -112,9 +112,8 @@ function UserRegForm() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    Email: form.email,
-                })
+                body: JSON.stringify(form.email,
+                )
             });
             if (!verificationResponse.ok) {
                 console.error("sending code failed");
