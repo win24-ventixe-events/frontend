@@ -4,6 +4,7 @@ import MainButton from '../Components/MainButton';
 import { jwtDecode } from 'jwt-decode';
 import LeftArrow from "../assets/images/arrow-left-5-svgrepo-com.svg"
 import Logo from '../assets/images/Logo.svg';
+import { SyncLoader } from "react-spinners";
 
 function MoreInfo() {
 
@@ -11,6 +12,7 @@ function MoreInfo() {
   const locationHook = useLocation();
   const eventData = locationHook.state;
   const [numTickets, setNumTickets] = useState(1);
+  const [loading, setLoading] = useState(true);
  
   const handleBookAndPay = async () =>{
 
@@ -38,6 +40,7 @@ function MoreInfo() {
     }
 
     try {
+      setLoading(true);
       const response = await fetch('https://ventixe-bookings-axaph0ajb7d6gagn.northeurope-01.azurewebsites.net/api/Booking', {
         method: 'POST',
         headers: {
@@ -46,16 +49,16 @@ function MoreInfo() {
         },
         body: JSON.stringify(bookingData),
       });
-
+      
       if (response.ok) {
         navigate('/success');
       } else {
         console.error('Booking failed with status:', response.status);
       }
 
-  } catch {
-      console.log("something went wrong")
-  }
+    } catch {
+        console.log("something went wrong")
+    }
 }
 
 const handleTicketChange = (e) => {
@@ -119,6 +122,11 @@ const handleTicketChange = (e) => {
           />
         <MainButton label={"Book And Pay"}  onClick={handleBookAndPay} />
         </div>
+        {loading && <div>
+                        <p>Booking your tickets...</p>
+                        <br />
+                        <SyncLoader color="#F26CF9" size={50} />
+        </div>}
     </div>
   )
 }

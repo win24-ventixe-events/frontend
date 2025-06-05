@@ -73,6 +73,8 @@ body {
     }
 }
 
+
+
 .btn {
     all: unset;
     cursor: pointer;
@@ -538,5 +540,31 @@ body {
     @media (max-width: 768px) {
         max-width: 100%;
         padding: 0 1.5rem;
+    }
+}
+
+.verification-section{
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        input{
+            padding: 1rem;
+            font-size: var(--body-16);
+            text-align: center;
+            border-radius: 1rem;
+            border: none;
+        }
+    }
+
+}
+
+.disabled{
+    background-color: grey;
+    opacity: .7;
+    &:hover{
+        background-color: grey;
     }
 }

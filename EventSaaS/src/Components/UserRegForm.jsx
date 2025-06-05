@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Logo from '../assets/images/Logo.svg';
+import MainButton from './MainButton';
 
 function UserRegForm() {
     const [form, setForm] = useState({
@@ -14,6 +15,7 @@ function UserRegForm() {
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState({});
+    const [isVerificationBoxShown, setIsVerificationBoxShown] = useState (false);
 
     const validationSchema = Yup.object({
         displayName: Yup.string().required("Display Name is Required"),
@@ -37,7 +39,7 @@ function UserRegForm() {
         setForm(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async e => {
+    const handleRegistrationSubmit = async e => {
         e.preventDefault();
 
         try{
@@ -79,6 +81,11 @@ function UserRegForm() {
     }
     };
 
+    const handleVerification = async (e)=>{
+        e.preventDefault();
+        setIsVerificationBoxShown(true);
+    }
+
     return (
         <div className="form-container wrapper">
             <img
@@ -87,7 +94,7 @@ function UserRegForm() {
                 className="public-image"
             />      
         <h1>Create Account</h1>
-        <form onSubmit={handleSubmit} noValidate>
+        <form onSubmit={handleVerification} noValidate>
             <div className="form-field">
             <label htmlFor="displayName">Display Name</label>
             <input
@@ -136,10 +143,27 @@ function UserRegForm() {
             {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
             </div>
 
-            <button className='btn main-btn' type="submit">
+            <button className={`btn main-btn ${isVerificationBoxShown ? "disabled" : ""}`} type="submit" disabled={isVerificationBoxShown}>
                 Register
             </button>
         </form>
+        {isVerificationBoxShown ? <div className="verification-section">
+            <div className="form-group">
+                <label htmlFor="verificationCode">Verification Code</label>
+                <input
+                    type="text"
+                    id="verificationCode"
+                    name="verificationCode"
+                    maxLength="6"
+                    pattern="[0-9]{6}"
+                    placeholder="Enter 6-digit code"
+                />
+            </div>   
+            <MainButton label="Verify Email" onClick={handleRegistrationSubmit} />
+        </div> : 
+        <div></div>
+        }
+        
         </div>
     )
 }
