@@ -110,7 +110,7 @@ function UserRegForm() {
         const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/send", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/x-www-form-urlencoded"
                 },
                 body: `email=${encodeURIComponent(form.email)}`
             });
