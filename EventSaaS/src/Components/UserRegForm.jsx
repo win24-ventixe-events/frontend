@@ -112,7 +112,7 @@ function UserRegForm() {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: `email=${encodeURIComponent(form.email)}`
+                body: encodeURIComponent(form.email)
             });
             if (!verificationResponse.ok) {
                 console.error("sending code failed");
