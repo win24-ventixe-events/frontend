@@ -568,3 +568,8 @@ body {
         background-color: grey;
     }
 }
+
+.error {
+    color: red;
+    font-size: var(--body-12);
+}

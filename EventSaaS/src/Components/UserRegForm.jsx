@@ -53,14 +53,14 @@ function UserRegForm() {
         try{
             await validationSchema.validate(form, {abortEarly: false});
 
-            const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/verify", {
+            const verificationResponse = await fetch("http://localhost:5017/api/Verification/verify", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    Email: form.email,
-                    Code: verificationCode
+                    Code: verificationCode,
+                    Email: form.email
                 })
             });
 
@@ -89,7 +89,7 @@ function UserRegForm() {
         return;
         }
 
-            navigate("/events");
+            navigate("/login");
 
         } catch (err) {
         if (err.name === "ValidationError" && Array.isArray(err.inner)) {
@@ -107,19 +107,36 @@ function UserRegForm() {
 
     const handleVerification = async (e)=>{
         e.preventDefault();
-        const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/send", {
+        try{
+            await validationSchema.validate(form, {abortEarly: false});
+        const verificationResponse = await fetch("http://localhost:5017/api/Verification/send", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    "Content-Type": "application/json"
                 },
-                body: encodeURIComponent(form.email)
+                body: JSON.stringify({
+                    email: form.email,
+                })
             });
+            console.log(form.email)
             if (!verificationResponse.ok) {
                 console.error("sending code failed");
                 return;
             }
 
             setIsVerificationBoxShown(true);
+        } catch (err) {
+            if (err.name === "ValidationError" && Array.isArray(err.inner)) {
+                const newErrors = {};
+                err.inner.forEach(({ path, message }) => {
+                    newErrors[path] = message;
+                });
+                setErrors(newErrors);
+            } else {
+                console.error("Unexpected error:", err);
+            }
+        }
+        
     }
 
     return (
