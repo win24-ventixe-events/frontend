@@ -59,8 +59,8 @@ function UserRegForm() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    email: form.email,
-                    verificationCode: verificationCode
+                    Email: form.email,
+                    Code: verificationCode
                 })
             });
 
@@ -113,11 +113,11 @@ function UserRegForm() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    email: form.email,
+                    Email: form.email,
                 })
             });
             if (!verificationResponse.ok) {
-                console.error("Verification failed");
+                console.error("sending code failed");
                 return;
             }
 
