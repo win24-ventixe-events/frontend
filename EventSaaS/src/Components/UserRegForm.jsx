@@ -12,7 +12,6 @@ function UserRegForm() {
     email: '',
     password: '',
     confirmPassword: '',
-    verified: true
     });
 
     const [verificationCode, setVerificationCode] = useState('');
