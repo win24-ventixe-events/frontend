@@ -12,7 +12,7 @@ function MoreInfo() {
   const locationHook = useLocation();
   const eventData = locationHook.state;
   const [numTickets, setNumTickets] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
  
   const handleBookAndPay = async () =>{
 
