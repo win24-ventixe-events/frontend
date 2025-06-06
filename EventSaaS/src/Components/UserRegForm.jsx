@@ -125,7 +125,6 @@ function UserRegForm() {
                     email: form.email,
                 })
             });
-            console.log(form.email)
             if (!verificationResponse.ok) {
                 console.error("sending code failed");
                 return;
