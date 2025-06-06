@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Logo from '../assets/images/Logo.svg';
 import MainButton from './MainButton';
+import { SyncLoader } from "react-spinners";
+
 
 function UserRegForm() {
     const [form, setForm] = useState({
@@ -17,6 +19,7 @@ function UserRegForm() {
 
     const navigate = useNavigate();
 
+    const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState({});
     const [isVerificationBoxShown, setIsVerificationBoxShown] = useState (false);
 
@@ -52,6 +55,8 @@ function UserRegForm() {
 
         try{
             await validationSchema.validate(form, {abortEarly: false});
+
+            setIsLoading(true);
 
             const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/verify", {
                 method: "POST",
@@ -92,24 +97,27 @@ function UserRegForm() {
             navigate("/login");
 
         } catch (err) {
-        if (err.name === "ValidationError" && Array.isArray(err.inner)) {
-            const newErrors = {};
-            err.inner.forEach(({ path, message }) => {
-            newErrors[path] = message;
-        });
-        setErrors(newErrors);
-        
-        } else {
-            console.error("Unexpected error:", err);
+            if (err.name === "ValidationError" && Array.isArray(err.inner)) {
+                const newErrors = {};
+                err.inner.forEach(({ path, message }) => {
+                newErrors[path] = message;
+            });
+            setErrors(newErrors);
+
+            } else {
+                console.error("Unexpected error:", err);
+            }
+        } finally {
+            setIsLoading(false);
         }
-    }
     };
 
     const handleVerification = async (e)=>{
         e.preventDefault();
         try{
             await validationSchema.validate(form, {abortEarly: false});
-        const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/send", {
+            setIsLoading(true);
+            const verificationResponse = await fetch("https://emailverification-exhdc8dtfth6hufj.northeurope-01.azurewebsites.net/api/Verification/send", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -135,6 +143,8 @@ function UserRegForm() {
             } else {
                 console.error("Unexpected error:", err);
             }
+        } finally{
+            setIsLoading(false)
         }
         
     }
@@ -199,6 +209,11 @@ function UserRegForm() {
             <button className={`btn main-btn ${isVerificationBoxShown ? "disabled" : ""}`} type="submit" disabled={isVerificationBoxShown}>
                 Register
             </button>
+            {isLoading ? (
+                <div className="loader-container">
+                    <SyncLoader color="#F26CF9" size={15} />
+                </div>
+            ) : ""}
         </form>
         {isVerificationBoxShown ? <div className="verification-section">
             <div className="form-group">
