@@ -8,7 +8,7 @@ function LoginForm() {
     const [form, setForm] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const validationSchema = Yup.object({
         email: Yup.string()
