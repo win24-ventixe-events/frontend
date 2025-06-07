@@ -239,9 +239,10 @@ body {
     text-decoration: underline;
 }
 
-.loggin-spinner{
+.login-spinner{
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -475,7 +476,6 @@ body {
     input {
         height: 2rem;
         width: 3rem;
-        padding: 2rem;
         font-size: var(--body-20);
     }
 }
