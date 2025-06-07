@@ -204,14 +204,16 @@ function UserRegForm() {
             {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
             </div>
 
-            <button className={`btn main-btn ${isVerificationBoxShown ? "disabled" : ""}`} type="submit" disabled={isVerificationBoxShown}>
-                Register
-            </button>
             {isLoading ? (
                 <div className="loader-container">
                     <SyncLoader color="#F26CF9" size={15} />
                 </div>
             ) : ""}
+            
+            <button className={`btn main-btn ${isVerificationBoxShown ? "disabled" : ""}`} type="submit" disabled={isVerificationBoxShown}>
+                Register
+            </button>
+            
         </form>
         {isVerificationBoxShown ? <div className="verification-section">
             <div className="form-group">

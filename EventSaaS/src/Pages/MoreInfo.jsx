@@ -109,24 +109,30 @@ const handleTicketChange = (e) => {
         </span>
         <a href="#">terms and condition applies.</a></p>
         <div className='book-and-pay'>
-          <label htmlFor="numTickets">Tickets (1-10): </label>
-          <input
-            type="number"
-            id="numTickets"
-            name="numTickets"
-            value={numTickets}
-            onChange={handleTicketChange}
-            min="1"
-            max="10"
-            required
-          />
-        <MainButton label={"Book And Pay"}  onClick={handleBookAndPay} />
-        </div>
-        {loading && <div>
+          <div className='ticket-selector'>
+            <label htmlFor="numTickets">Tickets (1-10): </label>
+                <input
+                  type="number"
+                  id="numTickets"
+                  name="numTickets"
+                  value={numTickets}
+                  onChange={handleTicketChange}
+                  min="1"
+                  max="10"
+                  required
+                />
+          </div>
+
+          {loading && <div>
                         <p>Booking your tickets...</p>
                         <br />
                         <SyncLoader color="#F26CF9" size={50} />
-        </div>}
+                      </div>
+          }
+
+        <MainButton label={"Book And Pay"}  onClick={handleBookAndPay} />
+        </div>
+        
     </div>
   )
 }

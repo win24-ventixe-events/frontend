@@ -110,13 +110,12 @@ function LoginForm() {
                     />
                     {errors.password && <span className="error">{errors.password}</span>}
                     </div>
-        
-                    <button className="btn main-btn" type="submit">Login</button>
-                </form>
-                {loading ? <div className='login-spinner'>
+                    {loading ? <div className='login-spinner'>
                             <SyncLoader color="#F26CF9" size={50} />
                             <p>Signing you in...</p>
                             </div> : "" }
+                    <button className="btn main-btn" type="submit">Login</button>
+                </form>
             </div>
         
     );

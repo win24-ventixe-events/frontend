@@ -474,6 +474,9 @@ body {
 
     input {
         height: 2rem;
+        width: 3rem;
+        padding: 2rem;
+        font-size: var(--body-20);
     }
 }
 
