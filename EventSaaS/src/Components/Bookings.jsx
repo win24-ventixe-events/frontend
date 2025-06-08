@@ -21,6 +21,7 @@ function Bookings() {
 
       const decodedToken = jwtDecode(token);
       const currentTime = Date.now() / 1000;
+      const userEmail = decodedToken.email;
 
       if (decodedToken.exp < currentTime) {
         console.error("Token expired. Please log in again.");
@@ -31,7 +32,7 @@ function Bookings() {
   
       const fetchBookings = async () => {
       try {
-          const res = await fetch("https://ventixe-bookings-axaph0ajb7d6gagn.northeurope-01.azurewebsites.net/api/Booking", {
+          const res = await fetch(`https://ventixe-bookings-axaph0ajb7d6gagn.northeurope-01.azurewebsites.net/api/Booking?email=${encodeURIComponent(userEmail)}`, {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
