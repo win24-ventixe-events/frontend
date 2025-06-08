@@ -35,6 +35,7 @@ function Bookings() {
           const res = await fetch(`https://ventixe-bookings-axaph0ajb7d6gagn.northeurope-01.azurewebsites.net/api/Booking?email=${encodeURIComponent(userEmail)}`, {
             headers: {
               'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
             },
           });
 
